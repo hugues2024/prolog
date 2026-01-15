@@ -1,0 +1,29 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% RÈGLES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Tout propriétaire de chien est un ami des animaux
+ami_animaux(X) :-
+    possede(X, Y),
+    chien(Y).
+
+% Aucun ami des animaux ne tue un animal
+% (représenté par une négation logique)
+ne_tue_pas(X, Y) :-
+    ami_animaux(X),
+    animal(Y).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FAITS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+possede(jack, chien1).            % Jack possède un chien
+chien(chien1).
+
+chat(chat1).                      % Il existe un chat
+animal(X) :- chien(X).
+animal(X) :- chat(X).
+
+% Jack ou John a tué le chat
+tue(jack, chat1).
+tue(john, chat1).

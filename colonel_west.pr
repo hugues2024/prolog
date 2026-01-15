@@ -1,0 +1,21 @@
+% RÈGLE DE LOI
+% Un Américain qui vend une arme à une nation ennemie
+% est un criminel
+
+criminel(X) :-
+    americain(X),
+    vend(X, Y, Z),
+    arme(Z),
+    ennemi(Y, amerique).
+
+
+% FAITS
+
+americain(west).                 % West est Américain
+nation(nono).                    % Nono est une nation
+ennemi(nono, amerique).          % Nono est ennemi de l'Amérique
+
+missile(m1).                     % m1 est un missile
+arme(X) :- missile(X).           % Les missiles sont des armes
+
+vend(west, nono, m1).             % West a vendu le missile m1 à Nono

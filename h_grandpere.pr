@@ -1,0 +1,47 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PERSONNES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+homme(h).
+homme(p).
+homme(s).
+homme(e).
+
+femme(v).
+femme(f).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MARIAGES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+epouse(h, v).      % H épouse V
+epouse(p, f).      % P épouse F
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FILIATION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+pere(p, h).        % P est le père de H
+mere(v, f).        % V est la mère de F
+
+pere(h, s).        % H et V ont un fils S
+mere(v, s).
+
+pere(p, e).        % P et F ont un enfant E
+mere(f, e).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% RÈGLES GÉNÉRALES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% X est parent de Y s'il est père ou mère
+parent(X, Y) :-
+    pere(X, Y).
+
+parent(X, Y) :-
+    mere(X, Y).
+
+% X est grand-père de Y s'il est le père d'un parent de Y
+grand_pere(X, Y) :-
+    pere(X, Z),
+    parent(Z, Y).

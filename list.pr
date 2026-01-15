@@ -1,0 +1,35 @@
+% hors_de(X, L)
+% X n'est PAS un élément de la liste L
+
+hors_de(_, []).                 % Un élément est hors de la liste vide
+hors_de(X, [H|T]) :-             % X est hors de [H|T] si
+    X \== H,                     % X est différent de la tête H
+    hors_de(X, T).               % et X est hors de la queue T
+
+
+% concat(L1, L2, L3)
+% L3 est la concaténation des listes L1 et L2
+
+concat([], L, L).                % La liste vide concaténée à L donne L
+concat([H|T], L2, [H|R]) :-      % On garde la tête H
+    concat(T, L2, R).            % et on concatène la suite
+
+
+% renverse(L, Lrev)
+% Lrev est la liste inverse de L
+% Version simple (compréhensible pour débutant)
+
+renverse([], []).                % L'inverse de la liste vide est vide
+renverse([H|T], Lrev) :-         % On inverse la queue T
+    renverse(T, Trev),
+    concat(Trev, [H], Lrev).     % puis on met H à la fin
+
+
+% enleve(X, L, LX)
+% X est un élément de L
+% LX est la liste L sans la première occurrence de X
+
+
+enleve(X, [X|T], T).             % Si X est en tête, on l'enlève
+enleve(X, [H|T], [H|R]) :-       % Sinon, on garde H
+    enleve(X, T, R).             % et on continue dans la queue
