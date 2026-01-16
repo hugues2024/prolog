@@ -1,0 +1,15 @@
+ % 1. Le cas de base : la somme des 0 premiers entiers est 0.
+
+somme(0, 0).
+
+% 2. La règle récursive : la somme de N est égale à N + (somme de N-1)
+
+somme(N, Resultat) :-
+
+    N > 0,                  % On vérifie que N est positif
+
+    M is N - 1,             % On prépare l'étape précédente (N-1)
+
+    somme(M, SommePrecedente), % Appel récursif : on calcule la somme jusqu'à M
+
+    Resultat is N + SommePrecedente. % On ajoute N au résultat précédent

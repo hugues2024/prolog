@@ -11,18 +11,18 @@ hors_de(X, [H|T]) :-             % X est hors de [H|T] si
 % L3 est la concaténation des listes L1 et L2
 
 concat([], L, L).                % La liste vide concaténée à L donne L
-concat([H|T], L2, [H|R]) :-      % On garde la tête H
-    concat(T, L2, R).            % et on concatène la suite
+concat([X1|L1], L2, [X1|L3]) :-      % On garde la tête X1
+    concat(L1, L2, L3).            % et on concatène la suite
 
 
-% renverse(L, Lrev)
-% Lrev est la liste inverse de L
+% renverse(L, Reversed)
+% Reversed est la liste inverse de L
 % Version simple (compréhensible pour débutant)
 
 renverse([], []).                % L'inverse de la liste vide est vide
-renverse([H|T], Lrev) :-         % On inverse la queue T
-    renverse(T, Trev),
-    concat(Trev, [H], Lrev).     % puis on met H à la fin
+renverse([First|Rest], Reversed ) :-         % On inverse la queue Rest
+    renverse(Rest, ReversedRest),
+    concat(ReversedRest, [First], Reversed).     % puis on met First à la fin
 
 
 % enleve(X, L, LX)

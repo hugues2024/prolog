@@ -1,6 +1,4 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % RÈGLES
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Tout propriétaire de chien est un ami des animaux
 ami_animaux(X) :-
@@ -13,9 +11,7 @@ ne_tue_pas(X, Y) :-
     ami_animaux(X),
     animal(Y).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % FAITS
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 possede(jack, chien1).            % Jack possède un chien
 chien(chien1).
