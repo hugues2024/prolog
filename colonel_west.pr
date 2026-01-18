@@ -5,6 +5,7 @@
 criminel(X) :-
     americain(X),
     vend(X, Y, Z),
+    nation(Y),
     arme(Z),
     ennemi(Y, amerique).
 

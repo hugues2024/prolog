@@ -17,7 +17,6 @@ concat([X1|L1], L2, [X1|L3]) :-      % On garde la tête X1
 
 % renverse(L, Reversed)
 % Reversed est la liste inverse de L
-% Version simple (compréhensible pour débutant)
 
 renverse([], []).                % L'inverse de la liste vide est vide
 renverse([First|Rest], Reversed ) :-         % On inverse la queue Rest
