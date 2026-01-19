@@ -15,6 +15,7 @@ ne_tue_pas(X, Y) :-
 animal(chat).
 animal(chien).
 possede(jack, chien).            % Jack possède un chien
+possede(jack, chat).            % Jack possède un chat
 
 
 % Une personne a tué un animal
