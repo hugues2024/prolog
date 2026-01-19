@@ -13,10 +13,7 @@ criminel(X) :-
 % FAITS
 
 americain(west).                 % West est Américain
+vend(west, nono, missiles).
 nation(nono).                    % Nono est une nation
+arme(missiles).
 ennemi(nono, amerique).          % Nono est ennemi de l'Amérique
-
-missile(m1).                     % m1 est un missile
-arme(X) :- missile(X).           % Les missiles sont des armes
-
-vend(west, nono, m1).             % West a vendu le missile m1 à Nono
