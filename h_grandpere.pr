@@ -1,33 +1,26 @@
 % PERSONNES
-
 homme(h).
 homme(p).
 homme(s).
-homme(e).
 
 femme(v).
 femme(f).
 
+veuve(v).
+
 % MARIAGES
 
-
-epouse(h, v).      % H épouse V
-epouse(p, f).      % P épouse F
+epouse(h, v).      % h épouse v
+epouse(p, f).      % p épouse f
 
 % FILIATION
-
-pere(p, h).        % P est le père de H
-mere(v, f).        % V est la mère de F
-
-pere(h, s).        % H et V ont un fils S
+pere(p, h).        % p est le père de h
+pere(h, s).        % h et v ont un fils s
+pere(p, e).        % p et f ont un enfant e
+mere(f, e).
+mere(v, f).        % v est la mère de f
 mere(v, s).
 
-pere(p, e).        % P et F ont un enfant E
-mere(f, e).
-
-% RÈGLES GÉNÉRALES
-
-% X est parent de Y s'il est père ou mère
 parent(X, Y) :-
     pere(X, Y).
 
@@ -38,3 +31,30 @@ parent(X, Y) :-
 grand_pere(X, Y) :-
     pere(X, Z),
     parent(Z, Y).
+gendre(p,h).  % p est le gendre de h
+
+
+gendre(X,Y):-  % X est le gendre de Y s'il épouse l'enfant de X
+    epouse(X,Z),
+    parent(Y,Z).
+
+frere(X,Y):-   % X est le frere ou la soeur de Y s'ils ont le même parent
+    parent(Z,X),
+    parent(Z,Y).
+
+cousin(X,Y):-  % X est le cousin de Y s'il leurs parents sont des freres
+    parent(A1,X),
+    parent(A2,Y),
+    frere(A1,A2).
+cousin(s,h).
+
+
+oncle(X,Y):- % X est l'oncle de Y s'il est le frere d'un parent de Y
+    parent(A,Y),
+    frere(X,A).
+oncle(s,s).
+
+% Nouvelles règles à ajouter pour obtenir h son propre grand père!
+belle_mere(f, h) :- epouse(p, f), pere(p, h).
+grand_mere(v, h) :- mere(v, f), belle_mere(f, h).
+grand_pere(h, h) :- epouse(h, v), grand_mere(v, h).
